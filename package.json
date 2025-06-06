@@ -84,7 +84,6 @@
     "@types/react-syntax-highlighter": "^15.5.13"
   },
   "overrides": {
-    "prismjs": "^1.30.0",
-    "refractor": "^4.7.0"
+    "prismjs": "^1.30.0"
   }
 }
