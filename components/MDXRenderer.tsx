@@ -81,7 +81,8 @@ export function MDXRenderer({ content }: MDXRendererProps) {
             </h4>
           ),
           // Enhanced code block component
-          code: ({ node, inline, className, children, ...props }) => {
+          code: (props) => {
+            const { node, inline, className, children, ...rest } = props as any;
             const match = /language-(\w+)/.exec(className || '');
             const language = match ? match[1] : '';
             const code = String(children).replace(/\n$/, '');
@@ -114,7 +115,7 @@ export function MDXRenderer({ content }: MDXRendererProps) {
                     </Button>
                   </div>
                   <SyntaxHighlighter
-                    style={isDark ? oneDark : oneLight}
+                    style={isDark ? (oneDark as any) : (oneLight as any)}
                     language={language}
                     PreTag="div"
                     className="!mt-0 !rounded-none !border-none"
@@ -124,7 +125,6 @@ export function MDXRenderer({ content }: MDXRendererProps) {
                       background: isDark ? '#0f172a' : '#f8fafc',
                       padding: '1.5rem',
                     }}
-                    {...props}
                   >
                     {code}
                   </SyntaxHighlighter>
